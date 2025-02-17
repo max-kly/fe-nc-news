@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { Link, NavLink } from "react-router"
-import { getArticles } from "../api/getArticles"
+import { getArticles } from "../api/articles"
 
 const Home = () => {
     const [articles, setArticles] = useState([])
