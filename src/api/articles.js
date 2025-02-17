@@ -5,3 +5,9 @@ export const getArticles = () => {
             return articles
         })
 }
+export const getArticleByID = (article_id) => {
+    return api.get(`/articles/${article_id}`)
+        .then(({ data: { article } }) => {
+            return article
+        })
+}
