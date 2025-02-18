@@ -5,3 +5,9 @@ export const getComments = (article_id) => {
             return comments
         })
 }
+export const addComment = (article_id, username, commentContent) => {
+    return api.post(`/articles/${article_id}/comments`, {username: username, body: commentContent})
+        .then(({ data: { comment } }) => {
+            return comment
+        })
+}
