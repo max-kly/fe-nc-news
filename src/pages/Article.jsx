@@ -2,6 +2,8 @@ import { useState, useEffect } from "react"
 import { useParams } from "react-router"
 import { getArticleByID } from "../api/articles"
 import { getComments } from "../api/comments"
+import { increaseVoteCount } from "../api/articles"
+import { decreaseVotesCount } from "../api/articles"
 import Error from "../components/Error"
 import { formatDate } from "../utils/utils"
 import Comments from "../components/Comments"
@@ -11,10 +13,14 @@ const Article = () => {
     const [err, setErr] = useState({})
     const [showComments, setShowComments] = useState(false)
     const [comments, setComments] = useState([])
+    const [votesCount, setVotesCount] = useState(null)
+    const [upVoted, setUpVoted] = useState(false)
+    const [downVoted, setDownVoted] = useState(false)
     useEffect(() => {
         getArticleByID(article_id)
             .then((article) => {
                 setArticle(article)
+                setVotesCount(article.votes)
             })
             .catch(({ response: { data } }) => {
                 setErr(data)
@@ -28,6 +34,20 @@ const Article = () => {
                 })
         }
     }, [showComments])
+    useEffect(() => {
+        if (!upVoted) return
+        increaseVoteCount(article_id)
+            .then((article) => {
+                setVotesCount(article.votes)
+            })
+    }, [upVoted])
+    useEffect(() => {
+        if (!downVoted) return
+        decreaseVotesCount(article_id)
+            .then((article) => {
+                setVotesCount(article.votes)
+            })
+    }, [downVoted])
     if (Object.keys(err).length > 0) {
         document.title = `😭 ${err.msg} - NC News 🗞️`
         return <Error err={err} />
@@ -42,10 +62,23 @@ const Article = () => {
                 <div className="date">{formatDate(article.created_at)}</div>
                 <div className="article-controls">
                     <div className="votes">
-                        <div className="vote-count">{article.votes}</div>
-                        <div className="votes-button">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314" />
+                        <div className="vote-count">{votesCount}</div>
+                        <div className="votes-button" onClick={(e) => {
+                            if (upVoted) alert('You already voted up this article')
+                            setUpVoted(true)
+                            setDownVoted(false)
+                        }}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
+                                <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0m-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z" />
+                            </svg>
+                        </div>
+                        <div className="votes-button" onClick={(e) => {
+                            if (downVoted) alert('You already voted down this article')
+                            setDownVoted(true)
+                            setUpVoted(false)
+                        }}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z" />
                             </svg>
                         </div>
                     </div>

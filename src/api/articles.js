@@ -11,3 +11,15 @@ export const getArticleByID = (article_id) => {
             return article
         })
 }
+export const increaseVoteCount = (article_id) => {
+    return api.patch(`/articles/${article_id}`, { inc_votes: 1 })
+        .then(({ data: { article } }) => {
+            return article
+        })
+}
+export const decreaseVotesCount = (article_id) => {
+    return api.patch(`/articles/${article_id}`, { inc_votes: -1 })
+        .then(({ data: { article } }) => {
+            return article
+        })
+}
