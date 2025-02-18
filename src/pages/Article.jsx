@@ -65,7 +65,7 @@ const Article = () => {
                 <div className="article-controls">
                     <div className="votes">
                         <div className="vote-count">{votesCount}</div>
-                        <div className="votes-button" onClick={(e) => {
+                        <button className="votes-button" onClick={(e) => {
                             if (upVoted) alert('You already voted up this article')
                             setUpVoted(true)
                             setDownVoted(false)
@@ -73,8 +73,8 @@ const Article = () => {
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
                                 <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0m-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z" />
                             </svg>
-                        </div>
-                        <div className="votes-button" onClick={(e) => {
+                        </button>
+                        <button className="votes-button" onClick={(e) => {
                             if (downVoted) alert('You already voted down this article')
                             setDownVoted(true)
                             setUpVoted(false)
@@ -82,17 +82,17 @@ const Article = () => {
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
                                 <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z" />
                             </svg>
-                        </div>
+                        </button>
                     </div>
                     <div className="comments-toggle" onClick={() => {
                         setShowComments(true)
                     }}>
                         <div className="comments-count">{commentCount}</div>
-                        <div className="comments-button">
+                        <button className="comments-button">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-fill" viewBox="0 0 16 16">
                                 <path d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-.938 4.18-1.234A9 9 0 0 0 8 15" />
                             </svg>
-                        </div>
+                        </button>
                     </div>
                 </div>
                 <div className="body">{article.body}</div>

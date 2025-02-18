@@ -201,6 +201,8 @@ article .comments-toggle {
 }
 
 article .votes .votes-button {
+  background: none;
+  border: none;
   margin-left: 10px;
   color: rgba(0, 0, 0, .3);
   cursor: pointer;
@@ -220,6 +222,8 @@ article .votes .votes-button:hover svg {
 article .comments-toggle .comments-button {
   margin-left: 10px;
   cursor: pointer;
+  background: none;
+  border: none;
 }
 
 article .comments-toggle .comments-button svg {
