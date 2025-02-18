@@ -1,4 +1,5 @@
 export const formatDate = (str) => {
+    if (!str) return ''
     const date = new Date(str)
     const dateStr = date.toString()
     const split = dateStr.toString().split(' ')

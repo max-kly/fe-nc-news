@@ -32,8 +32,6 @@ const Article = () => {
         document.title = `😭 ${err.msg} - NC News 🗞️`
         return <Error err={err} />
     }
-
-    const createdAt = formatDate(article_id)
     document.title = `🔥 ${article.title} - NC News 🗞️`
     return (
         <main>
@@ -41,7 +39,7 @@ const Article = () => {
                 <img src={article.article_img_url} alt={article.topic} className="hero" />
                 <div className="topic">{article.topic}</div>
                 <h1>{article.title}</h1>
-                <div className="date">{createdAt}</div>
+                <div className="date">{formatDate(article.created_at)}</div>
                 <div className="article-controls">
                     <div className="votes">
                         <div className="vote-count">{article.votes}</div>
