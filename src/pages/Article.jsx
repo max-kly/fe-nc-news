@@ -1,12 +1,16 @@
 import { useState, useEffect } from "react"
 import { useParams } from "react-router"
 import { getArticleByID } from "../api/articles"
+import { getComments } from "../api/comments"
 import Error from "../components/Error"
 import { formatDate } from "../utils/utils"
+import Comments from "../components/Comments"
 const Article = () => {
     const { article_id } = useParams()
     const [article, setArticle] = useState({})
     const [err, setErr] = useState({})
+    const [showComments, setShowComments] = useState(false)
+    const [comments, setComments] = useState([])
     useEffect(() => {
         getArticleByID(article_id)
             .then((article) => {
@@ -16,6 +20,14 @@ const Article = () => {
                 setErr(data)
             })
     }, [])
+    useEffect(() => {
+        if (showComments) {
+            getComments(article_id)
+                .then((comments) => {
+                    setComments(comments)
+                })
+        }
+    }, [showComments])
     if (Object.keys(err).length > 0) {
         document.title = `😭 ${err.msg} - NC News 🗞️`
         return <Error err={err} />
@@ -39,7 +51,9 @@ const Article = () => {
                             </svg>
                         </div>
                     </div>
-                    <div className="comments-toggle">
+                    <div className="comments-toggle" onClick={() => {
+                        setShowComments(true)
+                    }}>
                         <div className="comments-count">{article.comment_count}</div>
                         <div className="comments-button">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-fill" viewBox="0 0 16 16">
@@ -51,6 +65,7 @@ const Article = () => {
                 <div className="body">{article.body}</div>
             </article>
             <div className="comments"></div>
+            {showComments ? <Comments setShowComments={setShowComments} comments={comments} /> : null}
         </main>
     )
 }

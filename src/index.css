@@ -3,7 +3,19 @@
   padding: 0px;
   box-sizing: border-box;
 }
+::-webkit-scrollbar {
+  width: 5px;
+}
 
+::-webkit-scrollbar-track {
+  border-radius: 100vh;
+  background: #FFF;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #FF0000;
+  border-radius: 10px;
+}
 body {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
@@ -242,4 +254,89 @@ article .comments-toggle .comments-button:hover svg {
   100% {
     transform: rotateY(180deg);
   }
+}
+.comments-area {
+  background-color: #FFF;
+  width: 100%;
+  max-width: 550px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  border-left: 1px solid #FF0000;
+  padding: 20px;
+  box-shadow: -2px 2px 20px rgba(0, 0, 0, .5);
+  animation: slide-in 1s ease-in;
+}
+.comments-area h2 {
+  text-align: center;
+  padding-bottom: 10px;
+}
+@keyframes slide-in {
+  0% {
+    right: -200vh;
+  }
+  100% {
+    right: 0;
+  }
+}
+.comments-area svg.closeBtn {
+  color: #FF0000;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  transition: all 0.5s;
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+}
+.comments-area .closeBtn:hover {
+  transform: rotate(180deg);
+}
+.comment {
+  margin: 65px 0px;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, .3);
+  position: relative;
+}
+.comment-header {
+  width: 100%;
+  top: -35px;
+  left: 0;
+  padding: 10px;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+}
+.comment-author span {
+  font-weight: 800;
+}
+.comment-votes {
+  position: absolute;
+  bottom: -15px;
+  right: 10px;
+  background: #FFF;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, .3);
+  padding: 10px;
+  display: flex;
+  border-radius: 30px;
+  align-items: center;
+  cursor: pointer;
+}
+.comment-votes svg {
+  margin-left: 10px;
+  color: rgba(0, 0, 0, .3);
+  transition: all 0.5s;
+}
+.comment-votes svg:hover {
+  color: #FF0000;
+}
+.comments-list {
+  height: 100vh;
+  overflow: scroll;
+  scrollbar-width: none;
+  padding: 10px 10px;
+}
+.comments-list::-webkit-scrollbar {
+  display: none;
 }
