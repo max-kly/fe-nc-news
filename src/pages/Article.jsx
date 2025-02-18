@@ -14,6 +14,7 @@ const Article = () => {
     const [showComments, setShowComments] = useState(false)
     const [comments, setComments] = useState([])
     const [votesCount, setVotesCount] = useState(null)
+    const [commentCount, setCommentCount] = useState(null)
     const [upVoted, setUpVoted] = useState(false)
     const [downVoted, setDownVoted] = useState(false)
     useEffect(() => {
@@ -21,6 +22,7 @@ const Article = () => {
             .then((article) => {
                 setArticle(article)
                 setVotesCount(article.votes)
+                setCommentCount(article.comment_count)
             })
             .catch(({ response: { data } }) => {
                 setErr(data)
@@ -85,7 +87,7 @@ const Article = () => {
                     <div className="comments-toggle" onClick={() => {
                         setShowComments(true)
                     }}>
-                        <div className="comments-count">{article.comment_count}</div>
+                        <div className="comments-count">{commentCount}</div>
                         <div className="comments-button">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-fill" viewBox="0 0 16 16">
                                 <path d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-.938 4.18-1.234A9 9 0 0 0 8 15" />
@@ -96,7 +98,7 @@ const Article = () => {
                 <div className="body">{article.body}</div>
             </article>
             <div className="comments"></div>
-            {showComments ? <Comments setShowComments={setShowComments} comments={comments} /> : null}
+            {showComments ? <Comments article_id={article_id} setShowComments={setShowComments} comments={comments} setComments={setComments} setCommentCount={setCommentCount}/> : null}
         </main>
     )
 }
