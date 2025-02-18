@@ -3,6 +3,7 @@
   padding: 0px;
   box-sizing: border-box;
 }
+
 ::-webkit-scrollbar {
   width: 5px;
 }
@@ -16,6 +17,7 @@
   background: #FF0000;
   border-radius: 10px;
 }
+
 body {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
@@ -184,12 +186,14 @@ article .body {
   animation: show-content 1.5s ease-in-out;
   margin-top: 50px;
 }
+
 .article-controls {
   display: flex;
   justify-content: space-between;
-  width: 100px;
+  width: 150px;
   margin: 30px;
 }
+
 article .votes,
 article .comments-toggle {
   display: flex;
@@ -198,18 +202,19 @@ article .comments-toggle {
 
 article .votes .votes-button {
   margin-left: 10px;
-  color: #FF0000;
+  color: rgba(0, 0, 0, .3);
   cursor: pointer;
 }
 
 article .votes .votes-button svg {
   transition: all 0.5s;
-  animation: rotate 1.5s infinite ease-in;
+  height: 30px;
+  width: 30px;
 }
 
 article .votes .votes-button:hover svg {
-  height: 30px;
-  width: 30px;
+  color: #FF0000;
+  animation: rotate 1.5s infinite ease-in;
 }
 
 article .comments-toggle .comments-button {
@@ -255,6 +260,7 @@ article .comments-toggle .comments-button:hover svg {
     transform: rotateY(180deg);
   }
 }
+
 .comments-area {
   background-color: #FFF;
   width: 100%;
@@ -267,18 +273,22 @@ article .comments-toggle .comments-button:hover svg {
   box-shadow: -2px 2px 20px rgba(0, 0, 0, .5);
   animation: slide-in 1s ease-in;
 }
+
 .comments-area h2 {
   text-align: center;
   padding-bottom: 10px;
 }
+
 @keyframes slide-in {
   0% {
     right: -200vh;
   }
+
   100% {
     right: 0;
   }
 }
+
 .comments-area svg.closeBtn {
   color: #FF0000;
   position: absolute;
@@ -289,16 +299,19 @@ article .comments-toggle .comments-button:hover svg {
   height: 20px;
   width: 20px;
 }
+
 .comments-area .closeBtn:hover {
   transform: rotate(180deg);
 }
+
 .comment {
-  margin: 65px 0px;
+  margin: 75px 0px;
   padding: 20px;
   border-radius: 20px;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, .3);
   position: relative;
 }
+
 .comment-header {
   width: 100%;
   top: -35px;
@@ -308,12 +321,14 @@ article .comments-toggle .comments-button:hover svg {
   display: flex;
   justify-content: space-between;
 }
+
 .comment-author span {
   font-weight: 800;
 }
+
 .comment-votes {
   position: absolute;
-  bottom: -15px;
+  bottom: -25px;
   right: 10px;
   background: #FFF;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, .3);
@@ -323,20 +338,24 @@ article .comments-toggle .comments-button:hover svg {
   align-items: center;
   cursor: pointer;
 }
+
 .comment-votes svg {
   margin-left: 10px;
   color: rgba(0, 0, 0, .3);
   transition: all 0.5s;
 }
+
 .comment-votes svg:hover {
   color: #FF0000;
 }
+
 .comments-list {
   height: 100vh;
   overflow: scroll;
   scrollbar-width: none;
   padding: 10px 10px;
 }
+
 .comments-list::-webkit-scrollbar {
   display: none;
 }
