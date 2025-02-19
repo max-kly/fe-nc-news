@@ -438,3 +438,24 @@ article .comments-toggle .comments-button:hover svg {
   background-color: #FF0000;
   color: #FFF;
 }
+.topics {
+  display: flex;
+  justify-content: center;
+}
+.topics .topic {
+  margin: 30px;
+  width: 100%;
+  max-width: 300px;
+  padding: 30px;
+  border: 1px solid #FF0000;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.topics .topic:hover {
+  box-shadow: 0px 0px 15px #FF0000;
+}
+.topics .topic .topic-name {
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
