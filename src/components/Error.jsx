@@ -1,4 +1,4 @@
-const Error = ({err}) => {
+const Error = ({ err }) => {
     return (
         <div className="error">
             <h1>Ooops</h1>

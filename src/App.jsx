@@ -6,12 +6,14 @@ import Home from './pages/Home'
 import Article from './pages/Article'
 import Topics from './pages/Topics'
 import Topic from './pages/Topic'
+import Error from './components/Error'
 
 function App() {
   const [userData, setUserData] = useState({})
   useEffect(() => {
     setUserData({ username: 'tickle122' })
   }, [])
+  const err = { msg: 'Page you are looking for is not found' }
   return (
     <UserAccount userData={userData}>
       <Header />
@@ -20,6 +22,7 @@ function App() {
         <Route path='/articles/:article_id' element={<Article />} />
         <Route path='/topics/' element={<Topics />} />
         <Route path='/topics/:topic_name' element={<Topic />} />
+        <Route path='/*' element={<Error err={err} />} />
       </Routes>
     </UserAccount>
   )

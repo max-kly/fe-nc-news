@@ -75,7 +75,10 @@ const Comments = ({ article_id, setShowComments, comments, setComments, setComme
             </div>
             <form action="/" onSubmit={(e) => {
                 e.preventDefault()
-                if (!userData.username) alert('Only logged in users can leave comments')
+                if (!userData.username) {
+                    alert('Only logged in users can leave comments')
+                    return
+                }
                 addComment(article_id, userData.username, commentContent)
                     .then(() => {
                         getComments(article_id)
