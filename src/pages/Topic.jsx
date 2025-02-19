@@ -2,15 +2,25 @@ import { useParams } from "react-router"
 import { getArticlesByTopic } from "../api/articles"
 import { useState, useEffect } from "react"
 import { Link } from "react-router"
+import Error from "../components/Error"
 const Topic = () => {
     const { topic_name } = useParams()
     const [articles, setArticles] = useState([])
+    const [err, setErr] = useState({})
     useEffect(() => {
         getArticlesByTopic(topic_name)
             .then((articles) => {
                 setArticles(articles)
             })
+            .catch(({ response: { data } }) => {
+                console.log(data)
+                setErr(data)
+            })
     }, [])
+    if (Object.keys(err).length > 0) {
+        document.title = `😭 ${err.msg} - NC News 🗞️`
+        return <Error err={err} />
+    }
     const topicName = topic_name.charAt(0).toUpperCase() + topic_name.slice(1)
     document.title = `🔥 ${topicName} - NC News 🗞️`
     return (
