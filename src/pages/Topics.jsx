@@ -13,14 +13,14 @@ const Topics = () => {
     return (
         <>
             <h1>Just pick a topic</h1>
-            <div className="topics">
+            <section className="topics">
                 {topics.map((topic) => {
                     return <Link to={topic.slug} className="topic" key={topic.slug}>
                         <div className="topic-name">{topic.slug.charAt(0).toUpperCase() + topic.slug.slice(1)}</div>
                         <div className="topic-desc">{topic.description}</div>
                     </Link>
                 })}
-            </div>
+            </section>
         </>
     )
 }

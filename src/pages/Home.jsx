@@ -61,7 +61,7 @@ const Home = () => {
                     {showSortDropdown ? <SortDropdown /> : null}
                 </div>
             </div>
-            <div className="articles">
+            <section className="articles">
                 {articles.map((article) => {
                     return <Link to={`articles/${article.article_id}`} className="article" key={article.article_id}>
                         <div className="topic">{article.topic}</div>
@@ -69,7 +69,7 @@ const Home = () => {
                         <p className="title">{article.title}</p>
                     </Link>
                 })}
-            </div>
+            </section>
         </>
     )
 }
