@@ -9,6 +9,7 @@ const Topics = () => {
                 setTopics(topics)
             })
     }, [])
+    document.title = `🔥 Topics - NC News 🗞️`
     return (
         <>
             <h1>Just pick a topic</h1>
