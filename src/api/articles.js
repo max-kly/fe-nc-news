@@ -23,3 +23,9 @@ export const decreaseVotesCount = (article_id) => {
             return article
         })
 }
+export const getArticlesByTopic = (topic) => {
+    return api.get(`/articles?topic=${topic}`)
+        .then(({ data: { articles } }) => {
+            return articles
+        })
+}
