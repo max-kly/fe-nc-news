@@ -466,6 +466,7 @@ article .comments-toggle .comments-button:hover svg {
 .topics {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .topics .topic {
