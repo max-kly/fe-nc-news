@@ -4,7 +4,7 @@ NC NEWS is a blog platform that allows users to:
 - Create articles
 - Leave comments
 - Vote up or down articles
-- Vote up or down comments<br />
+- Vote up or down comments
 This repo contains a frontend for blog platofrm<br />
 Live demo is [here](https://lustrous-chaja-0f015c.netlify.app)<br />
 Backend repo to take a look or clone is [here](https://github.com/max-kly/nc-news)<br />
@@ -29,7 +29,8 @@ The React app itself and includes:
 - `components` folder -> Contains separate elements like Comments, Error, Header, etc
 - `pages` folder -> Contains available pages where Components are included
 - `utils` folder -> Contains helper functions that are not related to quering a backend
-
-
-
+<br />
+<br />
+<br />
+<br />
 This portfolio project was created as part of a Digital Skills Bootcamp in Software Engineering provided by [Northcoders](https://northcoders.com/)
