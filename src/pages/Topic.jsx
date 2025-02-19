@@ -11,9 +11,11 @@ const Topic = () => {
                 setArticles(articles)
             })
     }, [])
+    const topicName = topic_name.charAt(0).toUpperCase() + topic_name.slice(1)
+    document.title = `🔥 ${topicName} - NC News 🗞️`
     return (
         <>
-            <h1>{topic_name.charAt(0).toUpperCase() + topic_name.slice(1)} articles</h1>
+            <h1>{topicName} articles</h1>
             <div className="articles">
                 {articles.map((article) => {
                     return <Link to={`../articles/${article.article_id}`} className="article" key={article.article_id}>

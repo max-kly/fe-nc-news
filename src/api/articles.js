@@ -29,3 +29,9 @@ export const getArticlesByTopic = (topic) => {
             return articles
         })
 }
+export const getSortedArticles = (query) => {
+    return api.get(`/articles?${query}`)
+        .then(({ data: { articles } }) => {
+            return articles
+        })
+}
