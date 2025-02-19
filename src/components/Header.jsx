@@ -2,7 +2,7 @@ import { NavLink } from "react-router"
 const Header = () => {
     return (
         <header>
-            <NavLink to='/'><img src="/src/assets/media/logo.png" alt="Northcoders logo" className="logo" /></NavLink>
+            <NavLink to='/'><img src="/public/assets/media/logo.png" alt="Northcoders logo" className="logo" /></NavLink>
             <nav>
                 <NavLink to='/topics'>Topics</NavLink>
                 <NavLink to='/authors'>Authors</NavLink>
