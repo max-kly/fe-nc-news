@@ -3,18 +3,23 @@ import { getArticlesByTopic } from "../api/articles"
 import { useState, useEffect } from "react"
 import { Link } from "react-router"
 import Error from "../components/Error"
+import Preloader from "../components/Preloader"
 const Topic = () => {
     const { topic_name } = useParams()
     const [articles, setArticles] = useState([])
     const [err, setErr] = useState({})
+    const [isLoading, setIsLoading] = useState(false)
     useEffect(() => {
+        setIsLoading(true)
         getArticlesByTopic(topic_name)
             .then((articles) => {
                 setArticles(articles)
+                setIsLoading(false)
             })
             .catch(({ response: { data } }) => {
                 console.log(data)
                 setErr(data)
+                setIsLoading(false)
             })
     }, [])
     if (Object.keys(err).length > 0) {
@@ -23,6 +28,7 @@ const Topic = () => {
     }
     const topicName = topic_name.charAt(0).toUpperCase() + topic_name.slice(1)
     document.title = `🔥 ${topicName} - NC News 🗞️`
+    if (isLoading) return <Preloader />
     return (
         <>
             <h1>{topicName} articles</h1>

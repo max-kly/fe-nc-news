@@ -4,6 +4,7 @@ import { getArticles } from "../api/articles"
 import { getSortedArticles } from "../api/articles"
 import { useSearchParams } from "react-router"
 import SortDropdown from "../components/SortDropdown"
+import Preloader from "../components/Preloader"
 const Home = () => {
     const [searchParams] = useSearchParams()
     const sortBy = searchParams.get('sort_by')
@@ -11,14 +12,19 @@ const Home = () => {
     const [articles, setArticles] = useState([])
     const [currentSort, setCurrentSort] = useState('Most recent')
     const [showSortDropdown, setShowSortDropdown] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
+    document.title = '🗞️ NC News'
     useEffect(() => {
+        setIsLoading(true)
         getArticles()
             .then((articles) => {
                 setArticles(articles)
+                setIsLoading(false)
             })
     }, [])
     useEffect(() => {
         if (!sortBy && !order) return
+        setIsLoading(true)
         const query = `sort_by=${sortBy}&order=${order}`
         getSortedArticles(query)
             .then((articles) => {
@@ -46,9 +52,13 @@ const Home = () => {
                     default:
                         setCurrentSort('Most recent')
                 }
+                setIsLoading(false)
                 return
             })
     }, [searchParams])
+    if (isLoading) {
+        return <Preloader />
+    }
     return (
         <>
             <h1>Welcome to NC News!</h1>

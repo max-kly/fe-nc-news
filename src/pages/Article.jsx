@@ -1,3 +1,4 @@
+import Preloader from "../components/Preloader"
 import { useState, useEffect } from "react"
 import { useParams } from "react-router"
 import { getArticleByID } from "../api/articles"
@@ -17,15 +18,19 @@ const Article = () => {
     const [commentCount, setCommentCount] = useState(null)
     const [upVoted, setUpVoted] = useState(false)
     const [downVoted, setDownVoted] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
     useEffect(() => {
+        setIsLoading(true)
         getArticleByID(article_id)
             .then((article) => {
                 setArticle(article)
                 setVotesCount(article.votes)
                 setCommentCount(article.comment_count)
+                setIsLoading(false)
             })
             .catch(({ response: { data } }) => {
                 setErr(data)
+                setIsLoading(false)
             })
     }, [])
     useEffect(() => {
@@ -55,6 +60,9 @@ const Article = () => {
         return <Error err={err} />
     }
     document.title = `🔥 ${article.title} - NC News 🗞️`
+    if (isLoading) {
+        return <Preloader />
+    }
     return (
         <main>
             <article>
@@ -98,7 +106,7 @@ const Article = () => {
                 <div className="body">{article.body}</div>
             </article>
             <div className="comments"></div>
-            {showComments ? <Comments article_id={article_id} setShowComments={setShowComments} comments={comments} setComments={setComments} setCommentCount={setCommentCount}/> : null}
+            {showComments ? <Comments article_id={article_id} setShowComments={setShowComments} comments={comments} setComments={setComments} setCommentCount={setCommentCount} /> : null}
         </main>
     )
 }
