@@ -5,7 +5,6 @@ const Header = () => {
             <NavLink to='/'><img src="/media/logo.png" alt="Northcoders logo" className="logo" /></NavLink>
             <nav>
                 <NavLink to='/topics'>Topics</NavLink>
-                <NavLink to='/authors'>Authors</NavLink>
             </nav>
         </header>
     )
