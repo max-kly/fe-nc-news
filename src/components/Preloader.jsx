@@ -1,12 +1,12 @@
 const Preloader = () => {
     return (
         <div id="preloader">
-            <div class="bar-container">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
+            <div className="bar-container">
+                <div className="bar"></div>
+                <div className="bar"></div>
+                <div className="bar"></div>
+                <div className="bar"></div>
+                <div className="bar"></div>
             </div>
         </div>
     )
