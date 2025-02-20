@@ -23,3 +23,9 @@ export const decreaseVotesCount = (article_id) => {
             return article
         })
 }
+export const postArticle = (article) => {
+    return api.post(`/articles/`, article)
+        .then(({ data: { article } }) => {
+            return article
+        })
+}
