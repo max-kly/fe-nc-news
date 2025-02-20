@@ -21,7 +21,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/articles/:article_id' element={<Article />} />
         <Route path='/topics/' element={<Topics />} />
-        <Route path='/topics/:topic_name' element={<Topic />} />
+        <Route path='/topics/:topic' element={<Topic />} />
         <Route path='/*' element={<Error err={err} />} />
       </Routes>
     </UserAccount>
