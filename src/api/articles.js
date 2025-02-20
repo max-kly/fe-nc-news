@@ -1,6 +1,6 @@
 import api from "./config"
-export const getArticles = () => {
-    return api.get('/articles')
+export const getArticles = (sort_by, order) => {
+    return api.get('/articles', { params: { sort_by, order } })
         .then(({ data: { articles } }) => {
             return articles
         })
@@ -25,12 +25,6 @@ export const decreaseVotesCount = (article_id) => {
 }
 export const getArticlesByTopic = (topic) => {
     return api.get(`/articles?topic=${topic}`)
-        .then(({ data: { articles } }) => {
-            return articles
-        })
-}
-export const getSortedArticles = (query) => {
-    return api.get(`/articles?${query}`)
         .then(({ data: { articles } }) => {
             return articles
         })
