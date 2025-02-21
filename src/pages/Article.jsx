@@ -97,7 +97,7 @@ const Article = () => {
                     </a>
                 </div>
                 <div className="body">{article.body}</div>
-                <Comments article_id={article_id} comments={comments} setComments={setComments} setCommentCount={setCommentCount} />
+                <Comments article_id={article_id} comments={comments} setComments={setComments} commentCount={commentCount} setCommentCount={setCommentCount} />
             </article>
         </main>
     )
