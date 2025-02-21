@@ -617,6 +617,24 @@ select {
   max-width: 600px;
   font-size: 16px;
 }
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 0px 0px 50px 0px;
+}
+.pagination button {
+  padding: 15px 20px;
+  color: #FFF;
+  background-color: #FF0000;
+  border: none;
+  border-radius: 40px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, .3);
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.pagination button:hover {
+  box-shadow: none;
+}
 @media screen and (max-width: 570px) {
   .articles .article {
     flex-direction: column;

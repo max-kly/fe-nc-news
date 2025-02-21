@@ -5,14 +5,17 @@ import { useState } from "react"
 import { getComments } from "../api/comments"
 import { deleteComment } from "../api/comments"
 import { getArticleByID } from "../api/articles"
-const Comments = ({ article_id, comments, setComments, setCommentCount }) => {
+import Pagination from "./CommentPagination"
+import CommentPagination from "./CommentPagination"
+const Comments = ({ article_id, comments, setComments, commentCount, setCommentCount }) => {
     const { userData } = useUserData()
-    const [commentContent, setCommentContent] = useState()
+    const [commentContent, setCommentContent] = useState([])
+    const [paginationPage, setPaginationPage] = useState(2)
+    const paginationLimit = 10;
     return (
         <div className="comments-area" id="comments">
             <h2>Comments</h2>
-            
-            <div className="comments-list">
+            <div className="comments-list" id="commentList">
                 {comments.map((comment) => {
                     if (comment.author === userData.username) {
                         return <div className="comment" key={comment.comment_id}>
@@ -69,6 +72,7 @@ const Comments = ({ article_id, comments, setComments, setCommentCount }) => {
                     </div>
                 })}
             </div>
+            {commentCount >= 10 ? <CommentPagination article_id={article_id} paginationPage={paginationPage} setPaginationPage={setPaginationPage} paginationLimit={paginationLimit} comments={comments} setComments={setComments} /> : null}
             <form className="commentForm" action="/" onSubmit={(e) => {
                 e.preventDefault()
                 if (!userData.username) {

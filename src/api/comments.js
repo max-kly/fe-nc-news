@@ -1,7 +1,7 @@
 import api from "./config"
 import { getArticleByID } from "./articles"
-export const getComments = (article_id) => {
-    return api.get(`/articles/${article_id}/comments`)
+export const getComments = (article_id, page, limit) => {
+    return api.get(`/articles/${article_id}/comments`, { params: { page, limit } })
         .then(({ data: { comments } }) => {
             return comments
         })
