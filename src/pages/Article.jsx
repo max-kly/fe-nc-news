@@ -36,11 +36,6 @@ const Article = () => {
                 setIsLoading(false)
             })
     }, [])
-    // useEffect(() => {
-    //     if (showComments) {
-
-    //     }
-    // }, [showComments])
     useEffect(() => {
         if (!upVoted) return
         increaseVoteCount(article_id)
