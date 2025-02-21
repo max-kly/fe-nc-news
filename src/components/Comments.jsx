@@ -5,17 +5,13 @@ import { useState } from "react"
 import { getComments } from "../api/comments"
 import { deleteComment } from "../api/comments"
 import { getArticleByID } from "../api/articles"
-const Comments = ({ article_id, setShowComments, comments, setComments, setCommentCount }) => {
+const Comments = ({ article_id, comments, setComments, setCommentCount }) => {
     const { userData } = useUserData()
     const [commentContent, setCommentContent] = useState()
     return (
-        <div className="comments-area">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="closeBtn" viewBox="0 0 16 16" onClick={() => {
-                setShowComments(false)
-            }}>
-                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
-            </svg>
+        <div className="comments-area" id="comments">
             <h2>Comments</h2>
+            
             <div className="comments-list">
                 {comments.map((comment) => {
                     if (comment.author === userData.username) {
@@ -73,7 +69,7 @@ const Comments = ({ article_id, setShowComments, comments, setComments, setComme
                     </div>
                 })}
             </div>
-            <form action="/" onSubmit={(e) => {
+            <form className="commentForm" action="/" onSubmit={(e) => {
                 e.preventDefault()
                 if (!userData.username) {
                     alert('Only logged in users can leave comments')

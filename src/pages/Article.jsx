@@ -12,7 +12,6 @@ const Article = () => {
     const { article_id } = useParams()
     const [article, setArticle] = useState({})
     const [err, setErr] = useState({})
-    const [showComments, setShowComments] = useState(false)
     const [comments, setComments] = useState([])
     const [votesCount, setVotesCount] = useState(null)
     const [commentCount, setCommentCount] = useState(null)
@@ -26,6 +25,10 @@ const Article = () => {
                 setArticle(article)
                 setVotesCount(article.votes)
                 setCommentCount(article.comment_count)
+                getComments(article_id)
+                    .then((comments) => {
+                        setComments(comments)
+                    })
                 setIsLoading(false)
             })
             .catch(({ response: { data } }) => {
@@ -33,14 +36,11 @@ const Article = () => {
                 setIsLoading(false)
             })
     }, [])
-    useEffect(() => {
-        if (showComments) {
-            getComments(article_id)
-                .then((comments) => {
-                    setComments(comments)
-                })
-        }
-    }, [showComments])
+    // useEffect(() => {
+    //     if (showComments) {
+
+    //     }
+    // }, [showComments])
     useEffect(() => {
         if (!upVoted) return
         increaseVoteCount(article_id)
@@ -92,21 +92,18 @@ const Article = () => {
                             </svg>
                         </button>
                     </div>
-                    <div className="comments-toggle" onClick={() => {
-                        setShowComments(true)
-                    }}>
+                    <a href="#comments" className="comments-toggle">
                         <div className="comments-count">{commentCount}</div>
                         <button className="comments-button">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chat-fill" viewBox="0 0 16 16">
                                 <path d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-.938 4.18-1.234A9 9 0 0 0 8 15" />
                             </svg>
                         </button>
-                    </div>
+                    </a>
                 </div>
                 <div className="body">{article.body}</div>
+                <Comments article_id={article_id} comments={comments} setComments={setComments} setCommentCount={setCommentCount} />
             </article>
-            <div className="comments"></div>
-            {showComments ? <Comments article_id={article_id} setShowComments={setShowComments} comments={comments} setComments={setComments} setCommentCount={setCommentCount} /> : null}
         </main>
     )
 }
