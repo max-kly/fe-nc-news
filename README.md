@@ -38,9 +38,10 @@ Backend repo to take a look or clone is [here](https://github.com/max-kly/nc-new
 1. Go to the [Netlify](https://www.netlify.com) and create a new account or sign in to existing one
 2. Set up your team and create a new project, connect your GitHub account
 3. Install Netlify CLI running npm install netlify-cli -g command
-4. Open up `root` directory in your terminal and run `npm run build` command to prepare your frontend for deployment
-5. In the same directory run `netlify deploy --prod` command and choose an exisiting project
-6. For publishing direcotry enter `dist`
+4. `[OPTIONAL]` In case you have your own backend, open up `src/api/config.js` and change `baseURL` to your own backend URL with your own API.
+5. Open up `root` directory in your terminal and run `npm run build` command to prepare your frontend for deployment
+6. In the same directory run `netlify deploy --prod` command and choose an exisiting project
+7. For publishing direcotry enter `dist`
 <br />
 <br />
 <br />
