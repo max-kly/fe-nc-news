@@ -1,6 +1,6 @@
 import api from "./config"
-export const getArticles = (sort_by, order, topic) => {
-    return api.get('/articles', { params: { sort_by, order, topic } })
+export const getArticles = (sort_by, order, topic, page, limit) => {
+    return api.get('/articles', { params: { sort_by, order, topic, page, limit } })
         .then(({ data: { articles } }) => {
             return articles
         })
