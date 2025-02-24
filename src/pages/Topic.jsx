@@ -17,52 +17,6 @@ const Topic = () => {
     const [articles, setArticles] = useState([])
     const [err, setErr] = useState({})
     const [isLoading, setIsLoading] = useState(false)
-    // useEffect(() => {
-    //     setIsLoading(true)
-    //     getArticles(undefined, undefined, topic)
-    //         .then((articles) => {
-    //             setArticles(articles)
-    //             setIsLoading(false)
-    //         })
-    //         .catch(({ response: { data } }) => {
-    //             setErr(data)
-    //             setIsLoading(false)
-    //         })
-    // }, [])
-    // useEffect(() => {
-    //     if (!sort_by && !order) return
-    //     setIsLoading(true)
-    //     const query = `sort_by=${sort_by}&order=${order}`
-    //     getArticles(sort_by, order, topic)
-    //         .then((articles) => {
-    //             setArticles(articles)
-    //             setShowSortDropdown(false)
-    //             switch (query) {
-    //                 case "sort_by=created_at&order=desc":
-    //                     setCurrentSort('Most recent')
-    //                     break;
-    //                 case "sort_by=created_at&order=asc":
-    //                     setCurrentSort('Oldest first')
-    //                     break;
-    //                 case "sort_by=comment_count&order=desc":
-    //                     setCurrentSort('Most commented')
-    //                     break;
-    //                 case "sort_by=comment_count&order=asc":
-    //                     setCurrentSort('Less commented')
-    //                     break;
-    //                 case "sort_by=votes&order=desc":
-    //                     setCurrentSort('Most voted')
-    //                     break;
-    //                 case "sort_by=votes&order=asc":
-    //                     setCurrentSort('Less voted')
-    //                     break;
-    //                 default:
-    //                     setCurrentSort('Most recent')
-    //             }
-    //             setIsLoading(false)
-    //             return
-    //         })
-    // }, [searchParams])
     useEffect(() => {
         setIsLoading(true)
         getArticles(sort_by, order, topic, page, 10)
