@@ -306,7 +306,12 @@ article .comments-toggle .comments-button:hover svg {
   text-align: center;
   padding-bottom: 10px;
 }
-
+.comments-area .placeholder {
+  text-align: center;
+  margin: 40px 10px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, .5);
+}
 .comment {
   margin: 75px 0px;
   padding: 20px;

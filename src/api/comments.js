@@ -21,3 +21,9 @@ export const deleteComment = (comment_id, article_id) => {
                 })
         })
 }
+export const updateCommentVotes = (comment_id, value) => {
+    return api.patch(`/comments/${comment_id}`, { inc_votes: value })
+        .then(({ data: { comment } }) => {
+            return comment
+        })
+}
