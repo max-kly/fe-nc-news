@@ -5,13 +5,55 @@ import { useState } from "react"
 import { getComments } from "../api/comments"
 import { deleteComment } from "../api/comments"
 import { getArticleByID } from "../api/articles"
-import Pagination from "./CommentPagination"
+import { updateCommentVotes } from "../api/comments"
 import CommentPagination from "./CommentPagination"
 const Comments = ({ article_id, comments, setComments, commentCount, setCommentCount }) => {
     const { userData } = useUserData()
     const [commentContent, setCommentContent] = useState([])
     const [paginationPage, setPaginationPage] = useState(2)
     const paginationLimit = 10;
+    const voteHandler = (e, comment, value) => {
+        const count = e.currentTarget.parentElement.querySelector('.comment-vote-count')
+        const currentVotes = count.textContent
+        count.textContent = Number(currentVotes) + value
+        updateCommentVotes(comment.comment_id, value)
+    }
+    if (!comments.length) {
+        return (
+            <div className="comments-area" id="comments">
+                <h2>Comments</h2>
+                <p className="placeholder">Be the first one to comment!</p>
+                <form className="commentForm" action="/" onSubmit={(e) => {
+                    e.preventDefault()
+                    if (!userData.username) {
+                        alert('Only logged in users can leave comments')
+                        return
+                    }
+                    addComment(article_id, userData.username, commentContent)
+                        .then(() => {
+                            getComments(article_id)
+                                .then((comments) => {
+                                    setComments(comments)
+                                    setCommentContent('')
+                                    getArticleByID(article_id)
+                                        .then(({ comment_count }) => {
+                                            setCommentCount(comment_count)
+                                        })
+                                })
+                        })
+                }}>
+                    <div className="comment-input">
+                        <textarea placeholder="Enter your comment" value={commentContent} onChange={(e) => {
+                            setCommentContent(e.target.value)
+                        }}></textarea>
+                        <div className="button-area">
+                            <input value='Submit' type="submit" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        )
+    }
     return (
         <div className="comments-area" id="comments">
             <h2>Comments</h2>
@@ -26,12 +68,16 @@ const Comments = ({ article_id, comments, setComments, commentCount, setCommentC
                             <div className="comment-body">{comment.body}</div>
                             <div className="comment-votes">
                                 <div className="comment-vote-count">{comment.votes}</div>
-                                <button className='voteControls'>
+                                <button className='voteControls' onClick={(e) => {
+                                    voteHandler(e, comment, 1)
+                                }}>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
                                         <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0m-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z" />
                                     </svg>
                                 </button>
-                                <button className='voteControls'>
+                                <button className='voteControls' onClick={(e) => {
+                                    voteHandler(e, comment, -1)
+                                }}>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
                                         <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z" />
                                     </svg>
@@ -62,12 +108,20 @@ const Comments = ({ article_id, comments, setComments, commentCount, setCommentC
                         <div className="comment-body">{comment.body}</div>
                         <div className="comment-votes">
                             <div className="comment-vote-count">{comment.votes}</div>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
-                                <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0m-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
-                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z" />
-                            </svg>
+                            <button className="voteControls" onClick={(e) => {
+                                voteHandler(e, comment, 1)
+                            }}>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
+                                    <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0m-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z" />
+                                </svg>
+                            </button>
+                            <button className="voteControls" onClick={(e) => {
+                                voteHandler(e, comment, -1)
+                            }}>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
+                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z" />
+                                </svg>
+                            </button>
                         </div>
                     </div>
                 })}
