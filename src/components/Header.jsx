@@ -1,15 +1,28 @@
 import { NavLink } from "react-router"
 import { useUserData } from "./UserAccount"
+import { useState } from "react"
+import MobileMenu from "./MobileMenu"
 const Header = () => {
     const { userData } = useUserData()
+    const [showMobileMenu, setShowMobileMenu] = useState(false)
     if (!userData.username) {
         return (
             <header>
                 <NavLink to='/'><img src="/media/logo.png" alt="Northcoders logo" className="logo" /></NavLink>
                 <nav>
-                    <NavLink to='/topics'>Topics</NavLink>
-                    <NavLink to='#'>Login</NavLink>
+                    <NavLink to='topics'>Topics</NavLink>
+                    <NavLink to='login'>Login</NavLink>
                 </nav>
+                <div className="mobile">
+                    <button onClick={() => {
+                        setShowMobileMenu(!showMobileMenu)
+                    }}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-list" viewBox="0 0 16 16">
+                            <path fillRule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+                        </svg>
+                    </button>
+                    {showMobileMenu ? <MobileMenu setShowMobileMenu={setShowMobileMenu} user={userData.username} /> : null}
+                </div>
             </header>
         )
     }
@@ -27,6 +40,16 @@ const Header = () => {
                     <span>New article</span>
                 </NavLink>
             </nav>
+            <div className="mobile">
+                <button onClick={() => {
+                    setShowMobileMenu(!showMobileMenu)
+                }}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-list" viewBox="0 0 16 16">
+                        <path fillRule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+                    </svg>
+                </button>
+                {showMobileMenu ? <MobileMenu setShowMobileMenu={setShowMobileMenu} user={userData.username} /> : null}
+            </div>
         </header>
     )
 }
