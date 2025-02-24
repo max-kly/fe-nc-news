@@ -69,6 +69,10 @@ const Comments = ({ article_id, comments, setComments, commentCount, setCommentC
                             <div className="comment-votes">
                                 <div className="comment-vote-count">{comment.votes}</div>
                                 <button className='voteControls' onClick={(e) => {
+                                    if (!userData.username) {
+                                        alert('Only logged in users can vote comments up')
+                                        return
+                                    }
                                     voteHandler(e, comment, 1)
                                 }}>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
@@ -76,6 +80,10 @@ const Comments = ({ article_id, comments, setComments, commentCount, setCommentC
                                     </svg>
                                 </button>
                                 <button className='voteControls' onClick={(e) => {
+                                    if (!userData.username) {
+                                        alert('Only logged in users can vote comments down')
+                                        return
+                                    }
                                     voteHandler(e, comment, -1)
                                 }}>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
@@ -109,6 +117,10 @@ const Comments = ({ article_id, comments, setComments, commentCount, setCommentC
                         <div className="comment-votes">
                             <div className="comment-vote-count">{comment.votes}</div>
                             <button className="voteControls" onClick={(e) => {
+                                if (!userData.username) {
+                                    alert('Only logged in users can vote comments down')
+                                    return
+                                }
                                 voteHandler(e, comment, 1)
                             }}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
@@ -116,6 +128,10 @@ const Comments = ({ article_id, comments, setComments, commentCount, setCommentC
                                 </svg>
                             </button>
                             <button className="voteControls" onClick={(e) => {
+                                if (!userData.username) {
+                                    alert('Only logged in users can vote comments down')
+                                    return
+                                }
                                 voteHandler(e, comment, -1)
                             }}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
