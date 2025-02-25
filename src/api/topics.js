@@ -5,3 +5,9 @@ export const getTopics = () => {
             return topics
         })
 }
+export const postTopic = (topic) => {
+    return api.post('/topics', topic)
+        .then(({ data: { topic } }) => {
+            return topic
+        })
+}
