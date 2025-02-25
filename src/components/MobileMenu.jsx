@@ -8,7 +8,7 @@ const MobileMenu = ({ setShowMobileMenu, user }) => {
                         !prevVal
                     })
                 }}>Topics</Link>
-                <Link to='login' className="option" onClick={() => {
+                <Link to='my-profile' className="option" onClick={() => {
                     setShowMobileMenu((prevVal) => {
                         !prevVal
                     })

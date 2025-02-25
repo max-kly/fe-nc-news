@@ -696,7 +696,37 @@ header .mobile button:hover {
   color: #FFF;
   background: #FF0000;
 }
-
+.user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+.user img {
+  width: 300px;
+  margin-bottom: 20px;
+}
+.user .name {
+  font-weight: 800;
+  font-size: 20px;
+}
+.user .username {
+  color: rgba(0, 0, 0, .5);
+}
+.user button {
+  background-color: #FF0000;
+  border: none;
+  padding: 15px 20px;
+  color: #FFF;
+  margin-top: 30px;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, .3);
+  transition: all 0.5s;
+}
+.user button:hover {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, .3);
+}
 @media screen and (max-width: 570px) {
   .articles .article {
     flex-direction: column;

@@ -11,7 +11,7 @@ const Header = () => {
                 <NavLink to='/'><img src="/media/logo.png" alt="Northcoders logo" className="logo" /></NavLink>
                 <nav>
                     <NavLink to='topics'>Topics</NavLink>
-                    <NavLink to='login'>Login</NavLink>
+                    <NavLink to='my-profile'>Login</NavLink>
                 </nav>
                 <div className="mobile">
                     <button onClick={() => {
@@ -31,7 +31,7 @@ const Header = () => {
             <NavLink to='/'><img src="/media/logo.png" alt="Northcoders logo" className="logo" /></NavLink>
             <nav>
                 <NavLink to='/topics'>Topics</NavLink>
-                <NavLink to='#' className="userProfile">{userData.username}</NavLink>
+                <NavLink to='/my-profile' className="userProfile">{userData.username}</NavLink>
                 <NavLink to='/articles/new-article' className='newArticleNav'>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-plus-circle" viewBox="0 0 16 16">
                         <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
