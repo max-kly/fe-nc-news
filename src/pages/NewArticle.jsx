@@ -36,13 +36,13 @@ const NewArticle = () => {
             }}>
                 <div className="input-group">
                     <label htmlFor="title">Article title</label>
-                    <input required value={articleTitle} type="text" id="title" placeholder="Enter article title" onChange={(e) => {
+                    <input required value={articleTitle} type="text" placeholder="Enter article title" onChange={(e) => {
                         setArticleTitle(e.target.value)
                     }} />
                 </div>
                 <div className="input-group">
                     <label htmlFor="topic">Article topic</label>
-                    <select required id="topic" onChange={(e) => {
+                    <select required onChange={(e) => {
                         setArticleTopic(e.target.value)
                     }}>
                         {topicList.map((topic) => {
@@ -52,13 +52,13 @@ const NewArticle = () => {
                 </div>
                 <div className="input-group">
                     <label htmlFor="content">Article content</label>
-                    <textarea required value={articleContent} type="text" id="content" placeholder="Enter article title" onChange={(e) => {
+                    <textarea required value={articleContent} type="text" placeholder="Enter article content" onChange={(e) => {
                         setArticleContent(e.target.value)
                     }}></textarea>
                 </div>
                 <div className="input-group">
                     <label htmlFor="title">Article cover</label>
-                    <input required value={articleImage} type="text" id="title" placeholder="https://domain.com/image.png" onChange={(e) => {
+                    <input required value={articleImage} type="text" placeholder="https://domain.com/image.png" onChange={(e) => {
                         setArticleImage(e.target.value)
                     }} />
                 </div>
