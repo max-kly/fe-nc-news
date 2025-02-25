@@ -52,7 +52,7 @@ const NewArticle = () => {
                 </div>
                 <div className="input-group">
                     <label htmlFor="content">Article content</label>
-                    <textarea required value={articleContent} type="text" placeholder="Enter article content" onChange={(e) => {
+                    <textarea id="content" required value={articleContent} type="text" placeholder="Enter article content" onChange={(e) => {
                         setArticleContent(e.target.value)
                     }}></textarea>
                 </div>
