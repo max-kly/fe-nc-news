@@ -1,14 +1,12 @@
 import { useUserData } from "../components/UserAccount"
-const MyProfile = ({ setUserData }) => {
-    const { userData } = useUserData()
-    if (!userData.username) {
+import { Link } from "react-router"
+const MyProfile = () => {
+    const { userData, setUserData } = useUserData()
+    if (!userData) {
         return (
             <div className="user">
                 <h1>Welcome back!</h1>
-                <button
-                    onClick={() => {
-                        setUserData({ username: 'tickle122', name: "Tom Tickle", avatar_url: "https://vignette.wikia.nocookie.net/mrmen/images/d/d6/Mr-Tickle-9a.png/revision/latest?cb=20180127221953" })
-                    }}>Login</button>
+                <Link to='/login'><button>Login</button></Link>
             </div>
         )
     }
@@ -19,7 +17,8 @@ const MyProfile = ({ setUserData }) => {
             <div className="username">{userData.username}</div>
             <button
                 onClick={() => {
-                    setUserData({})
+                    setUserData(null)
+                    localStorage.removeItem('session')
                 }}>Log out</button>
         </div>
     )

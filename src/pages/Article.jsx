@@ -1,13 +1,12 @@
 import Preloader from "../components/Preloader"
 import { useState, useEffect } from "react"
 import { useParams } from "react-router"
-import { getArticleByID } from "../api/articles"
+import { getArticleByID, increaseVoteCount, decreaseVotesCount } from "../api/articles"
 import { getComments } from "../api/comments"
-import { increaseVoteCount } from "../api/articles"
-import { decreaseVotesCount } from "../api/articles"
 import Error from "../components/Error"
 import { formatDate } from "../utils/utils"
 import Comments from "../components/Comments"
+import { useUserData } from "../components/UserAccount"
 const Article = () => {
     const { article_id } = useParams()
     const [article, setArticle] = useState({})
@@ -18,6 +17,7 @@ const Article = () => {
     const [upVoted, setUpVoted] = useState(false)
     const [downVoted, setDownVoted] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
+    const { userData } = useUserData()
     useEffect(() => {
         setIsLoading(true)
         getArticleByID(article_id)
@@ -69,6 +69,10 @@ const Article = () => {
                     <div className="votes">
                         <div className="vote-count">{votesCount}</div>
                         <button className="votes-button" onClick={(e) => {
+                            if (!userData) {
+                                alert('Only logged in users are allowed to vote articles up')
+                                return
+                            }
                             if (upVoted) alert('You already voted up this article')
                             setUpVoted(true)
                             setDownVoted(false)
@@ -78,6 +82,10 @@ const Article = () => {
                             </svg>
                         </button>
                         <button className="votes-button" onClick={(e) => {
+                            if (!userData) {
+                                alert('Only logged in users are allowed to vote articles down')
+                                return
+                            }
                             if (downVoted) alert('You already voted down this article')
                             setDownVoted(true)
                             setUpVoted(false)

@@ -9,7 +9,7 @@ const NewTopic = () => {
     const [description, setDescription] = useState('')
     const navigate = useNavigate()
     document.title = '🔥 New topic - NC News'
-    if (!userData.username) {
+    if (!userData) {
         const err = { msg: 'Only logged in users are allowed to add new topics' }
         return <Error err={err} />
     }
