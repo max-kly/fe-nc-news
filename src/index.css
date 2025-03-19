@@ -190,7 +190,12 @@ header .dropdown .option svg {
   margin-top: 10px;
   animation: show-content 1.5s ease-in-out;
 }
-
+form p.error {
+  font-size: 14px;
+  color: #FF0000;
+  height: unset;
+  margin-top: 25px;
+}
 img.hero {
   width: 100%;
   border-radius: 30px;

@@ -1,11 +1,8 @@
 import { formatDate } from "../utils/utils"
 import { useUserData } from "./UserAccount"
-import { addComment } from "../api/comments"
+import { addComment, getComments, deleteComment, updateCommentVotes } from "../api/comments"
 import { useState } from "react"
-import { getComments } from "../api/comments"
-import { deleteComment } from "../api/comments"
 import { getArticleByID } from "../api/articles"
-import { updateCommentVotes } from "../api/comments"
 import CommentPagination from "./CommentPagination"
 const Comments = ({ article_id, comments, setComments, commentCount, setCommentCount }) => {
     const { userData } = useUserData()
@@ -59,7 +56,7 @@ const Comments = ({ article_id, comments, setComments, commentCount, setCommentC
             <h2>Comments</h2>
             <div className="comments-list" id="commentList">
                 {comments.map((comment) => {
-                    if (comment.author === userData.username) {
+                    if (userData && comment.author === userData.username) {
                         return <div className="comment" key={comment.comment_id}>
                             <div className="comment-header">
                                 <div className="comment-author"><span>{comment.author}</span> said:</div>
@@ -117,7 +114,7 @@ const Comments = ({ article_id, comments, setComments, commentCount, setCommentC
                         <div className="comment-votes">
                             <div className="comment-vote-count">{comment.votes}</div>
                             <button className="voteControls" onClick={(e) => {
-                                if (!userData.username) {
+                                if (!userData) {
                                     alert('Only logged in users can vote comments down')
                                     return
                                 }
@@ -128,7 +125,7 @@ const Comments = ({ article_id, comments, setComments, commentCount, setCommentC
                                 </svg>
                             </button>
                             <button className="voteControls" onClick={(e) => {
-                                if (!userData.username) {
+                                if (!userData) {
                                     alert('Only logged in users can vote comments down')
                                     return
                                 }
@@ -145,7 +142,7 @@ const Comments = ({ article_id, comments, setComments, commentCount, setCommentC
             {commentCount >= 10 ? <CommentPagination article_id={article_id} paginationPage={paginationPage} setPaginationPage={setPaginationPage} paginationLimit={paginationLimit} comments={comments} setComments={setComments} /> : null}
             <form className="commentForm" action="/" onSubmit={(e) => {
                 e.preventDefault()
-                if (!userData.username) {
+                if (!userData) {
                     alert('Only logged in users can leave comments')
                     return
                 }

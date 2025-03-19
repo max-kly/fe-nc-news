@@ -20,7 +20,7 @@ const NewArticle = () => {
             })
     }, [])
     document.title = '🔥 New article - NC News'
-    if (!userData.username) {
+    if (!userData) {
         const err = { msg: 'Only logged in users are allowed to add new articles' }
         return <Error err={err} />
     }

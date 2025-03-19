@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Routes, Route } from 'react-router'
+import { Routes, Route, data } from 'react-router'
 import UserAccount from './components/UserAccount'
 import Header from './components/Header'
 import Home from './pages/Home'
@@ -9,16 +9,12 @@ import Topic from './pages/Topic'
 import NewArticle from './pages/NewArticle'
 import NewTopic from './pages/NewTopic'
 import MyProfile from './pages/MyProfile'
+import Login from './pages/Login'
 import Error from './components/Error'
-
 function App() {
-  const [userData, setUserData] = useState({})
-  useEffect(() => {
-    setUserData({ username: 'tickle122', name: "Tom Tickle", avatar_url: "https://vignette.wikia.nocookie.net/mrmen/images/d/d6/Mr-Tickle-9a.png/revision/latest?cb=20180127221953" })
-  }, [])
   const err = { msg: 'Page you are looking for is not found' }
   return (
-    <UserAccount userData={userData}>
+    <UserAccount>
       <Header />
       <Routes>
         <Route path='/' element={<Home />} />
@@ -27,7 +23,8 @@ function App() {
         <Route path='/topics/:topic' element={<Topic />} />
         <Route path='topics/new-topic' element={<NewTopic />} />
         <Route path='/articles/new-article' element={<NewArticle />} />
-        <Route path='/my-profile' element={<MyProfile setUserData={setUserData} />} />
+        <Route path='/my-profile' element={<MyProfile />} />
+        <Route path='/login' element={<Login />} />
         <Route path='/*' element={<Error err={err} />} />
       </Routes>
     </UserAccount>
