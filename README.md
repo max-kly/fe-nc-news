@@ -4,8 +4,13 @@ NC NEWS is a blog platform that allows users to:
 - Create articles
 - Leave comments
 - Vote up or down articles
-- Vote up or down comments<br />
+- Vote up or down comments
+<br />
+<br />
+
 Application consists from 2 parts: backend and frontend<br />
+<br />
+
 This repo contains a frontend for blog platofrm<br />
 Live demo is [here](https://news-by-max-kly.netlify.app/)<br />
 Backend repo to take a look or clone is [here](https://github.com/max-kly/nc-news)<br />
