@@ -27,7 +27,7 @@ Backend repo to take a look or clone is [here](https://github.com/max-kly/nc-new
 1. Fork the repo and clone it down
 2. Open up your terminal and run `npm install` to install all required packages
 3. Run `npm run dev` to run NC NEWS locally<br />
-## Project structure 📁
+## Project structure explanation 📁
 - `Public` ➡️ includes media and `_redirects` file to specify the folder as the root. This folder will be served as the root directery when you run website locally or on the production<br />
 - `Src` ➡️ the React app itself and includes:
 - - `api` ➡️ contains functions that make queries to backend and a config file for Axios where you should put your own base url if you have your own backend
@@ -46,4 +46,5 @@ Backend repo to take a look or clone is [here](https://github.com/max-kly/nc-new
 <br />
 <br />
 <br />
-This portfolio project was created as part of a Digital Skills Bootcamp in Software Engineering provided by [Northcoders](https://northcoders.com/)
+
+This portfolio project was created as part of a Digital Skills Bootcamp in Software Engineering provided by [Northcoders](https://northcoders.com)
