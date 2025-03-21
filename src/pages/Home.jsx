@@ -88,7 +88,7 @@ const Home = () => {
     }
     return (
         <>
-            <h1>Welcome to NC News!</h1>
+            <h1 id="top">Welcome to NC News!</h1>
             <div className="controls">
                 <div className="group">
                     <div className="label">Sort by:</div>

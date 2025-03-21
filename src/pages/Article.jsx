@@ -54,7 +54,7 @@ const Article = () => {
         document.title = `😭 ${err.msg} - NC News 🗞️`
         return <Error err={err} />
     }
-    document.title = `🔥 ${article.title} - NC News 🗞️`
+    { isLoading ? document.title = `Loading ... - NC News 🗞️` : document.title = `🔥 ${article.title} - NC News 🗞️` }
     if (isLoading) {
         return <Preloader />
     }

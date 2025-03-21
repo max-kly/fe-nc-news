@@ -27,3 +27,24 @@ export const updateCommentVotes = (comment_id, value) => {
             return comment
         })
 }
+export const postNewComment = (article_id, userData, commentContent, setComments, setCommentContent, setCommentCount, setPostingComment) => {
+    if (!userData) {
+        alert('Only logged in users can leave comments')
+        setCommentContent('')
+        return
+    }
+    setPostingComment(true)
+    addComment(article_id, userData.username, commentContent)
+        .then(() => {
+            getComments(article_id)
+                .then((comments) => {
+                    setComments(comments)
+                    setCommentContent('')
+                    getArticleByID(article_id)
+                        .then(({ comment_count }) => {
+                            setCommentCount(comment_count)
+                            setPostingComment(false)
+                        })
+                })
+        })
+}
