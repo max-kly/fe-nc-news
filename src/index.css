@@ -77,7 +77,8 @@ nav a {
   margin-right: 20px;
 }
 
-.controls .group button, .newTopicBtn {
+.controls .group button,
+.newTopicBtn {
   border: 1px solid #FF0000;
   padding: 15px 20px;
   background-color: transparent;
@@ -86,7 +87,8 @@ nav a {
   transition: all 0.5s ease-out;
 }
 
-.controls .group button:hover, .newTopicBtn:hover {
+.controls .group button:hover,
+.newTopicBtn:hover {
   color: #FFF;
   background-color: #FF0000;
 }
@@ -102,10 +104,12 @@ header .dropdown {
   box-shadow: 0px 2px 10px rgba(0, 0, 0, .3);
   z-index: 100;
 }
+
 header .dropdown {
   right: 20px;
   text-align: end;
 }
+
 .controls .dropdown .option,
 header .dropdown .option {
   margin: 10px 0px;
@@ -123,10 +127,12 @@ header .dropdown .option {
   display: flex;
   align-items: center;
 }
+
 header .dropdown .option svg {
   color: #FF0000;
   margin-right: 5px;
 }
+
 .articles {
   display: flex;
   flex-direction: column;
@@ -190,12 +196,14 @@ header .dropdown .option svg {
   margin-top: 10px;
   animation: show-content 1.5s ease-in-out;
 }
+
 form p.error {
   font-size: 14px;
   color: #FF0000;
   height: unset;
   margin-top: 25px;
 }
+
 img.hero {
   width: 100%;
   border-radius: 30px;
@@ -365,7 +373,6 @@ article .comments-toggle .comments-button:hover svg {
   padding: 10px;
   display: flex;
   border-radius: 30px;
-  align-items: center;
   cursor: pointer;
 }
 
@@ -443,18 +450,12 @@ article .comments-toggle .comments-button:hover svg {
 }
 
 .comment .delete {
-  position: absolute;
   background: none;
   border: none;
   color: rgba(0, 0, 0, .3);
   transition: all 0.5s;
   cursor: pointer;
-  bottom: -25px;
-  right: 100px;
-  background: #FFF;
-  padding: 10px;
-  border-radius: 10px;
-  box-shadow: 0px 2px 10px rgba(0, 0, 0, .3);
+  margin-right: 10px;
 }
 
 .comment .delete:hover {
@@ -701,23 +702,28 @@ header .mobile button:hover {
   color: #FFF;
   background: #FF0000;
 }
+
 .user {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 50px;
 }
+
 .user img {
   width: 300px;
   margin-bottom: 20px;
 }
+
 .user .name {
   font-weight: 800;
   font-size: 20px;
 }
+
 .user .username {
   color: rgba(0, 0, 0, .5);
 }
+
 .user button {
   background-color: #FF0000;
   border: none;
@@ -729,9 +735,11 @@ header .mobile button:hover {
   box-shadow: 0px 5px 10px rgba(0, 0, 0, .3);
   transition: all 0.5s;
 }
+
 .user button:hover {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, .3);
 }
+
 @media screen and (max-width: 570px) {
   .articles .article {
     flex-direction: column;
