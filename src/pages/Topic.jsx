@@ -87,7 +87,7 @@ const Topic = () => {
     if (isLoading) return <Preloader />
     return (
         <>
-            <h1>{topicName} articles</h1>
+            <h1 id="top">{topicName} articles</h1>
             <div className="controls">
                 <div className="group">
                     <div className="label">Sort by:</div>
