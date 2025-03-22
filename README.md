@@ -14,6 +14,8 @@ Application consists from 2 parts: backend and frontend<br />
 This repo contains a frontend for blog platofrm<br />
 Live demo is [here](https://news-by-max-kly.netlify.app/)<br />
 Backend repo to take a look or clone is [here](https://github.com/max-kly/nc-news)<br />
+
+--- 
 ## Tech stack ⚙️
 - ⚡ ReactJS
 - ⚡ NodeJS
@@ -23,15 +25,18 @@ Backend repo to take a look or clone is [here](https://github.com/max-kly/nc-new
 - ⚡ Supabase
 - ⚡ Render
 - ⚡ Netlify
+---
 ## Requirements ❗️
 - Node version is **v22.11.0**
 - Axios version is **1.7.9**
 - React version is **19.0.0**
 - React Router version is **7.1.5**<br />
+---
 ## Instructions 👨‍💻
 1. Fork the repo and clone it down
 2. Open up your terminal and run `npm install` to install all required packages
 3. Run `npm run dev` to run NC NEWS locally<br />
+---
 ## Project structure explanation 📁
 - `Public` ➡️ includes media and `_redirects` file to specify the folder as the root. This folder will be served as the root directery when you run website locally or on the production<br />
 - `Src` ➡️ the React app itself and includes:
@@ -39,6 +44,7 @@ Backend repo to take a look or clone is [here](https://github.com/max-kly/nc-new
 - - `components` ➡️ contains separate elements like Comments, Error, Header, etc
 - - `pages` ➡️ contains available pages where Components are included
 - `utils` ➡️ contains helper functions that are not related to quering a backend
+---
 ## Deployment ☁️
 1. Go to the [Netlify](https://www.netlify.com) and create a new account or sign in to existing one
 2. Set up your team and create a new project, connect your GitHub account
@@ -50,6 +56,6 @@ Backend repo to take a look or clone is [here](https://github.com/max-kly/nc-new
 <br />
 <br />
 <br />
-<br />
 
+---
 This portfolio project was created as part of a Digital Skills Bootcamp in Software Engineering provided by [Northcoders](https://northcoders.com)
