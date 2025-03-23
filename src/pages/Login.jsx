@@ -3,8 +3,8 @@ import { validateCredentials } from "../api/login"
 import { useNavigate } from "react-router"
 import { useUserData } from "../components/UserAccount"
 const Login = () => {
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
+    const [username, setUsername] = useState('tickle122')
+    const [password, setPassword] = useState('tickle122123!')
     const [errMsg, setErrMsg] = useState('')
     const { userData, setUserData } = useUserData()
     const navigate = useNavigate()
