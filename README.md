@@ -17,11 +17,9 @@ Backend repo to take a look or clone is [here](https://github.com/max-kly/nc-new
 
 --- 
 ## How does application work? 🔧
-Application contains a database of users, articles, topics and comments. This repo contains only frontend for the blogging platform. Frontend run on React and renders page components based on the visited route. Everytime page reloads application sends a request to `api/users/auth` endpoint and validates user session using JWT. <br />
-``
-Please, not that this application does not send JWT token using http with headers and stores token in a local storage which is not the best practice.
-``
+Application contains a database of users, articles, topics and comments. This repo contains only frontend for the blogging platform. Frontend runs on React and renders page components based on the visited route. Everytime page reloads application sends a request to `api/users/auth` endpoint and validates user session using JWT. <br />
 
+> Please, not that this application does not send JWT token using http with headers and stores token in a local storage which is not the best practice.
 ---
 ## Tech stack ⚙️
 - ⚡ ReactJS
