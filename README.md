@@ -4,14 +4,22 @@ NC NEWS is a blog platform that allows users to:
 - Create articles
 - Leave comments
 - Vote up or down articles
-- Vote up or down comments<br />
-Application consists from 2 parts: backend and frontend<br />
-This repo contains a frontend for blog platofrm<br />
+- Vote up or down comments
+<br />
+
+Application consists from 2 parts: backend and frontend
+<br />
+
+This repo contains a frontend for blog platofrm
+<br />
+
 Live demo is [here](https://news-by-max-kly.netlify.app/)<br />
-Backend repo to take a look or clone is [here](https://github.com/max-kly/nc-news)<br />
+Backend repo to take a look or clone is [here](https://github.com/max-kly/nc-news)
+
 ## How does application work? 🔧
 Application contains a database of users, articles, topics and comments. This repo contains only frontend for the blogging platform. Frontend runs on React and renders page components based on the visited route. Everytime page reloads application sends a request to `api/users/auth` endpoint and validates user session using JWT. <br />
-> Please, not that this application does not send JWT token using http with headers and stores token in a local storage which is not the best practice.
+> [!CAUTION]
+> Please, note that this application does not send JWT token using http with headers and stores token in a local storage which is not the best practice.
 ## Tech stack ⚙️
 - ⚡ ReactJS
 - ⚡ NodeJS
