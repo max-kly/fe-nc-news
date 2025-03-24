@@ -16,6 +16,13 @@ Live demo is [here](https://news-by-max-kly.netlify.app/)<br />
 Backend repo to take a look or clone is [here](https://github.com/max-kly/nc-news)<br />
 
 --- 
+## How does application work? 🔧
+Application contains a database of users, articles, topics and comments. This repo contains only frontend for the blogging platform. Frontend run on React and renders page components based on the visited route. Everytime page reloads application sends a request to `api/users/auth` endpoint and validates user session using JWT. <br />
+``
+Please, not that this application does not send JWT token using http with headers and stores token in a local storage which is not the best practice.
+``
+
+---
 ## Tech stack ⚙️
 - ⚡ ReactJS
 - ⚡ NodeJS
@@ -27,15 +34,16 @@ Backend repo to take a look or clone is [here](https://github.com/max-kly/nc-new
 - ⚡ Netlify
 ---
 ## Requirements ❗️
-- Node version is **v22.11.0**
-- Axios version is **1.7.9**
-- React version is **19.0.0**
-- React Router version is **7.1.5**<br />
+- 📦 Node version is **v22.11.0**
+- 📦 Axios version is **1.7.9**
+- 📦 React version is **19.0.0**
+- 📦 React Router version is **7.1.5**<br />
 ---
-## Instructions 👨‍💻
+## Installation 👨‍💻
 1. Fork the repo and clone it down
 2. Open up your terminal and run `npm install` to install all required packages
-3. Run `npm run dev` to run NC NEWS locally<br />
+3. Head to the `src/api/config.js` file and change `baseURL` to your actual API url
+3. Run `npm run dev` to run NC NEWS locally
 ---
 ## Project structure explanation 📁
 - `Public` ➡️ includes media and `_redirects` file to specify the folder as the root. This folder will be served as the root directery when you run website locally or on the production<br />
